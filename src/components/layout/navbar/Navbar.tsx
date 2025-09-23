@@ -24,6 +24,11 @@ const NAV_ITEMS: NavItem[] = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
+  const numbers = [1, 2, 3];
+  numbers.map((n) => {
+    n * 2; // ❌ ESLint: Missing return statement
+  });
+
   return (
     <header className="w-full fixed z-50 top-0 left-0">
       <div className="flex justify-between items-center px-6 py-6">

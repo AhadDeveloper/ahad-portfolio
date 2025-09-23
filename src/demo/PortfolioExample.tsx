@@ -1,6 +1,4 @@
-// Portfolio example component using the Soft Violet + Blue Gray theme
-
-export default function PortfolioExample() {
+const PortfolioExample: React.FC = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header/Navigation */}
@@ -96,8 +94,8 @@ export default function PortfolioExample() {
                 <div className="w-20 h-20 bg-primary rounded-full"></div>
               </div>
               <p className="text-center text-muted-foreground">
-                "Clean code is not written by following a set of rules. Clean
-                code is written by someone who cares."
+                &quot;Clean code is not written by following a set of rules.
+                Clean code is written by someone who cares.&quot;
               </p>
             </div>
           </div>
@@ -157,11 +155,11 @@ export default function PortfolioExample() {
       <section className="py-16 px-6 bg-muted/30">
         <div className="container mx-auto max-w-2xl text-center">
           <h2 className="font-heading text-3xl font-bold text-foreground mb-6">
-            Let's Work Together
+            Let&apos;s Work Together
           </h2>
           <p className="text-muted-foreground mb-8">
-            Have a project in mind? I'd love to hear about it. Let's discuss how
-            we can bring your ideas to life.
+            Have a project in mind? I&apos;d love to hear about it. Let&apos;s
+            discuss how we can bring your ideas to life.
           </p>
           <div className="bg-card p-8 rounded-xl border border-border">
             <div className="grid md:grid-cols-2 gap-6">
@@ -195,4 +193,6 @@ export default function PortfolioExample() {
       </footer>
     </div>
   );
-}
+};
+
+export default PortfolioExample;
