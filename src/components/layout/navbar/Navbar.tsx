@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-
-import AhadLogo from "@/assets/Logo";
-import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import { Menu, X, Moon, Sun } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useTheme } from "next-themes";
+
+import { Button } from "@/components/ui/button";
+import AhadLogo from "@/assets/Logo";
 
 interface NavItem {
   id: string;
@@ -22,73 +23,106 @@ const NAV_ITEMS: NavItem[] = [
 ];
 
 export default function Navbar() {
+  const { theme, setTheme } = useTheme();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const numbers = [1, 2, 3];
-  numbers.map((n) => {
-    n * 2; // ❌ ESLint: Missing return statement
-  });
+  const themeHandler = () => {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+  };
 
   return (
     <header className="w-full fixed z-50 top-0 left-0">
-      <div className="flex justify-between items-center px-6 py-6">
+      <div className="flex justify-between gap-4 items-center px-6 lg:px-8 py-8">
         {/* Ahad Logo */}
         <Link href="#home">
-          <AhadLogo />
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            whileHover={{ scale: 1.1, rotate: 2 }}
+            className="xl:w-[130px] xl:h-[55px] cursor-pointer"
+          >
+            <AhadLogo className="w-full h-full" />
+          </motion.div>
         </Link>
-        {/* Desktop Navbar */}
-        <nav className="hidden md:flex items-center">
-          <ul className="flex bg-card gap-8 py-3 px-6 rounded-md shadow-md border-border border-y">
+
+        {/* Desktop Navbar Links */}
+        <nav className="hidden md:flex justify-center items-center bg-card shadow-md border-border border-y rounded-md">
+          <ul className="flex gap-6 lg:gap-8 xl:gap-9 py-2.5 lg:py-3 xl:py-3.5 px-6">
             {NAV_ITEMS.map((item) => (
               <li
                 key={item.id}
                 className="text-muted-foreground hover:text-primary transition-transform duration-200 hover:scale-105 hover:-translate-y-0.5"
               >
-                <Link href={item.id}>{item.label}</Link>
+                <Link href={item.id} className="text-base xl:text-lg">
+                  {item.label}
+                </Link>
               </li>
             ))}
           </ul>
         </nav>
 
-        {/* Desktop contact */}
-        <div className="hidden md:flex">
-          <Link href="#contact">
-            <Button>Contact</Button>
-          </Link>
+        {/* Desktop theme and contact buttons */}
+        <div className="hidden md:flex gap-4 lg:gap-6">
+          <Button
+            variant={theme === "light" ? "secondary" : "default"}
+            size="lg"
+            className="cursor-pointer xl:h-12"
+            onClick={themeHandler}
+          >
+            {theme === "light" ? (
+              <Moon className="size-4 xl:size-5" />
+            ) : (
+              <Sun className="size-4 xl:size-5" />
+            )}
+          </Button>
+
+          <Button
+            asChild
+            size="lg"
+            className="cursor-pointer xl:text-lg xl:h-12 xl:px-7"
+          >
+            <Link href="#contact">Contact</Link>
+          </Button>
         </div>
 
-        {/* Mobile Menu with button */}
-        <Button
-          className="md:hidden"
-          onClick={() => setIsOpen((prev) => !prev)}
-        >
-          <AnimatePresence mode="wait" initial={false}>
-            {isOpen ? (
-              <motion.div
-                key="close"
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <X />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="menu"
-                initial={{ rotate: 90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: -90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Menu />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </Button>
+        {/* Mobile Menu with theme and menu buttons */}
+        <div className="md:hidden flex gap-4">
+          <Button
+            variant={theme === "light" ? "secondary" : "default"}
+            size="icon"
+            onClick={themeHandler}
+          >
+            {theme === "light" ? <Moon /> : <Sun />}
+          </Button>
+          <Button onClick={() => setIsOpen((prev) => !prev)}>
+            <AnimatePresence mode="wait" initial={false}>
+              {isOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <X />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="menu"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Menu />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </Button>
+        </div>
       </div>
 
-      {/* Mobile Menu with Framer Motion */}
+      {/* Mobile Menu Links and contact button with Framer Motion */}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -194,16 +228,19 @@ export default function Navbar() {
                     }}
                     className="px-6 py-4"
                   >
-                    <Link href="#contact" onClick={() => setIsOpen(false)}>
-                      <motion.div
-                        whileTap={{ scale: 0.98 }}
-                        transition={{
-                          type: "spring",
-                          stiffness: 400,
-                          damping: 20,
-                        }}
+                    <motion.div
+                      whileTap={{ scale: 0.98 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 20,
+                      }}
+                    >
+                      <Button
+                        asChild
+                        className="w-full bg-gradient-to-r from-primary to-primary/80 shadow-lg transition-all duration-300"
                       >
-                        <Button className="w-full bg-gradient-to-r from-primary to-primary/80 shadow-lg transition-all duration-300">
+                        <Link href="#contact" onClick={() => setIsOpen(false)}>
                           <motion.span
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -211,9 +248,9 @@ export default function Navbar() {
                           >
                             Contact
                           </motion.span>
-                        </Button>
-                      </motion.div>
-                    </Link>
+                        </Link>
+                      </Button>
+                    </motion.div>
                   </motion.div>
                 </motion.div>
               </div>

@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
 import NavbarDemo from "@/demo/NavbarDemo";
 import Navbar from "@/components/layout/navbar/Navbar";
 import Footer from "@/components/layout/footer/Footer";
-
-import { Analytics } from "@vercel/analytics/next";
+import Providers from "@/Providers/ThemeProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -34,10 +34,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("antialiased", poppins.variable, inter.variable)}>
-        <NavbarDemo />
-        <Navbar />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+        <Providers>
+          <NavbarDemo />
+          <Navbar />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+        </Providers>
         {/* Vercel Analytics */}
         <Analytics />
       </body>
