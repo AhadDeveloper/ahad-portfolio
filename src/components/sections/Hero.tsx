@@ -17,7 +17,7 @@ export default function HeroSection() {
         className="flex flex-col gap-6 max-w-xl text-center md:text-left mt-10 md:mt-0"
       >
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
-          Hi, I'm <span className="text-primary">Ahad</span>
+          Hi, {"I'm"} <span className="text-primary">Ahad</span>
         </h1>
 
         {/* Typing Animation */}
@@ -40,10 +40,10 @@ export default function HeroSection() {
 
         <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
           I specialize in building scalable and performant web applications
-          using <span className="font-semibold text-foreground">React</span>,{" "}
-          <span className="font-semibold text-foreground">Next.js</span>,{" "}
-          <span className="font-semibold text-foreground">TypeScript</span>,{" "}
-          <span className="font-semibold text-foreground">Firebase</span> and{" "}
+          using <span className="font-semibold text-foreground">React</span>,
+          <span className="font-semibold text-foreground">Next.js</span>,
+          <span className="font-semibold text-foreground">TypeScript</span>,
+          <span className="font-semibold text-foreground">Firebase</span> and
           <span className="font-semibold text-foreground">Supabase</span>.
         </p>
 
