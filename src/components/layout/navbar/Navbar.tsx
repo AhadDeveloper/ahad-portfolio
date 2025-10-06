@@ -31,13 +31,11 @@ export default function Navbar() {
   };
 
   return (
-    <header className="w-full fixed z-50 top-0 left-0">
+    <header className="w-full fixed z-50 top-0 left-0 h-32">
       <div className="flex justify-between gap-4 items-center px-6 lg:px-8 py-8">
         {/* Ahad Logo */}
         <Link href="#home">
           <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
             whileHover={{ scale: 1.1, rotate: 2 }}
             className="xl:w-[130px] xl:h-[55px] cursor-pointer"
           >

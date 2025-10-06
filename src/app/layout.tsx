@@ -35,7 +35,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn("antialiased", poppins.variable, inter.variable)}>
         <Providers>
-          <NavbarDemo />
           <Navbar />
           <main className="min-h-screen">{children}</main>
           <Footer />
