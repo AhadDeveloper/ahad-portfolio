@@ -8,7 +8,7 @@ import ahadProfile from "@/assets/ahad-gray-profile.png";
 
 export default function HeroSection() {
   return (
-    <section className="relative flex flex-col-reverse md:flex-row items-center justify-between px-6 sm:px-10 md:px-24 py-24">
+    <section className="flex flex-col-reverse md:flex-row items-center justify-between md:gap-16 px-6 sm:px-10 md:px-24 py-20">
       {/* Left Text Content */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}

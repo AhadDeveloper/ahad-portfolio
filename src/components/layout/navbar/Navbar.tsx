@@ -146,7 +146,7 @@ export default function Navbar() {
               }}
               style={{ perspective: "1000px" }}
             >
-              <div className="bg-card/95 border-y border-border rounded-2xl shadow-2xl overflow-hidden">
+              <div className="bg-card border-y border-border rounded-2xl shadow-2xl overflow-hidden">
                 {/* Menu items with staggered animation */}
                 <motion.div
                   className="flex flex-col py-2"
