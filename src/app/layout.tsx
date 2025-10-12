@@ -35,7 +35,7 @@ export default function RootLayout({
       <body className={cn("antialiased", poppins.variable, inter.variable)}>
         <Providers>
           <Navbar />
-          <main className="min-h-screen">{children}</main>
+          <main className="min-h-screen mt-40 md:mt-52">{children}</main>
           <Footer />
         </Providers>
         {/* Vercel Analytics */}

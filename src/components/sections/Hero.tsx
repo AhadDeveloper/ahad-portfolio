@@ -8,13 +8,13 @@ import ahadProfile from "@/assets/ahad-gray-profile.png";
 
 export default function HeroSection() {
   return (
-    <section className="flex flex-col-reverse md:flex-row items-center justify-between md:gap-16 px-6 sm:px-10 md:px-24 py-20">
+    <section className="flex flex-col-reverse md:flex-row items-center justify-between gap-4 md:gap-16 px-6 sm:px-10 md:px-24">
       {/* Left Text Content */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="flex flex-col gap-6 max-w-xl text-center md:text-left mt-10 md:mt-0"
+        className="flex flex-col gap-6 max-w-xl text-center md:text-left"
       >
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
           Hi, {"I'm"} <span className="text-primary">Ahad</span>
@@ -53,12 +53,12 @@ export default function HeroSection() {
           transition={{ delay: 0.3 }}
           className="flex flex-wrap gap-4 justify-center md:justify-start"
         >
-          <Button className="px-6 py-3 text-base font-medium">
+          <Button className="cursor-pointer xl:text-lg xl:h-12 xl:px-7">
             Download Resume
           </Button>
           <Button
             variant="secondary"
-            className="px-6 py-3 text-base font-medium"
+            className="cursor-pointer xl:text-lg xl:h-12 xl:px-7"
           >
             View Projects
           </Button>
