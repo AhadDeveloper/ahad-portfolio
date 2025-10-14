@@ -32,7 +32,7 @@ export default function Navbar() {
 
   return (
     <header className="w-full fixed z-50 top-0 left-0 bg-card border-border border-b-2">
-      <div className="flex justify-between gap-4 items-center px-6 lg:px-8 py-6 pb-7">
+      <div className="flex justify-between gap-4 items-center px-6 lg:px-8 py-2.5 md:py-6">
         {/* Ahad Logo */}
         <Link href="#home">
           <motion.div
@@ -45,7 +45,7 @@ export default function Navbar() {
 
         {/* Desktop Navbar Links */}
         <nav className="hidden md:flex justify-center items-center bg-card shadow-md border-border border-y rounded-md">
-          <ul className="flex gap-6 lg:gap-8 xl:gap-9 py-2.5 lg:py-3 xl:py-3.5 px-6">
+          <ul className="flex gap-6 lg:gap-8 xl:gap-9 py-2.5 lg:py-3 px-6">
             {NAV_ITEMS.map((item) => (
               <li
                 key={item.id}
@@ -136,7 +136,7 @@ export default function Navbar() {
 
             {/* Menu container */}
             <motion.div
-              className="md:hidden mx-5"
+              className="fixed top-20 left-0 right-0 z-50 mx-5 md:hidden"
               initial={{ opacity: 0, y: -20, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -20, scale: 0.95 }}
