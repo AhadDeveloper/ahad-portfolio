@@ -15,7 +15,7 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { id: "home", label: "Home" },
+  { id: "hero", label: "Home" },
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
@@ -25,6 +25,7 @@ const NAV_ITEMS: NavItem[] = [
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [activeSection, setActiveSection] = useState<string>("hero");
 
   const themeHandler = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
@@ -34,14 +35,12 @@ export default function Navbar() {
     <header className="w-full fixed z-50 top-0 left-0 bg-card border-border border-b-2">
       <div className="flex justify-between gap-4 items-center px-6 lg:px-8 py-2.5 md:py-6">
         {/* Ahad Logo */}
-        <Link href="#home">
-          <motion.div
-            whileHover={{ scale: 1.1, rotate: 2 }}
-            className="xl:w-[130px] xl:h-[55px] cursor-pointer"
-          >
-            <AhadLogo className="w-full h-full" />
-          </motion.div>
-        </Link>
+        <motion.div
+          whileHover={{ scale: 1.1, rotate: 2 }}
+          className="xl:w-[130px] xl:h-[55px]"
+        >
+          <AhadLogo className="w-full h-full" />
+        </motion.div>
 
         {/* Desktop Navbar Links */}
         <nav className="hidden md:flex justify-center items-center bg-card shadow-md border-border border-y rounded-md">
@@ -51,7 +50,11 @@ export default function Navbar() {
                 key={item.id}
                 className="text-muted-foreground hover:text-primary transition-transform duration-200 hover:scale-105 hover:-translate-y-0.5"
               >
-                <Link href={item.id} className="text-base xl:text-lg">
+                <Link
+                  href={`#${item.id}`}
+                  className={`xl:text-lg ${activeSection === item.id ? "text-primary" : ""}`}
+                  onClick={() => setActiveSection(item.id)}
+                >
                   {item.label}
                 </Link>
               </li>
@@ -192,9 +195,12 @@ export default function Navbar() {
                       className="relative"
                     >
                       <Link
-                        href={item.id}
-                        className="block px-6 py-4 text-muted-foreground active:text-primary transition-colors duration-200 relative"
-                        onClick={() => setIsOpen(false)}
+                        href={`#${item.id}`}
+                        className={`block px-6 py-4 text-muted-foreground transition-colors duration-200 relative ${activeSection === item.id ? "text-primary" : ""}`}
+                        onClick={() => {
+                          setIsOpen(false);
+                          setActiveSection(item.id);
+                        }}
                       >
                         <span className="font-medium tracking-wide">
                           {item.label}
