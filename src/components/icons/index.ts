@@ -1,0 +1,16 @@
+export { default as HtmlIcon } from "./Html";
+export { default as CssIcon } from "./Css";
+export { default as JsIcon } from "./Js";
+export { default as ReactIcon } from "./React";
+export { default as NextIcon } from "./Next";
+export { default as TsIcon } from "./Ts";
+export { default as TailwindIcon } from "./Tailwind";
+export { default as NodeIcon } from "./Node";
+export { default as MongoIcon } from "./Mongo";
+export { default as PostgresIcon } from "./Postgres";
+export { default as PrismaIcon } from "./Prisma";
+export { default as ShadcnIcon } from "./Shadcn";
+export { default as ExpressIcon } from "./Express";
+export { default as ReduxIcon } from "./Redux";
+export { default as GitIcon } from "./Git";
+export { default as DockerIcon } from "./Docker";
