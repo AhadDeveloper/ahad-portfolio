@@ -13,4 +13,5 @@ export { default as ShadcnIcon } from "./Shadcn";
 export { default as ExpressIcon } from "./Express";
 export { default as ReduxIcon } from "./Redux";
 export { default as GitIcon } from "./Git";
+export { default as GithubIcon } from "./Githb";
 export { default as DockerIcon } from "./Docker";
