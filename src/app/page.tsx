@@ -1,6 +1,7 @@
 import HeroSection from "@/components/sections/Hero";
 import AboutSection from "@/components/sections/About";
 import SkillsSection from "@/components/sections/Skills";
+import ProjectsSection from "@/components/sections/Projects";
 
 export default function Home() {
   return (
@@ -14,10 +15,9 @@ export default function Home() {
       <section id="skills" className="scroll-mt-30 md:scroll-mt-52">
         <SkillsSection />
       </section>
-      <section
-        id="projects"
-        className="h-[40rem] bg-pink-600 scroll-mt-30 md:scroll-mt-52"
-      ></section>
+      <section id="projects" className="scroll-mt-30 md:scroll-mt-52">
+        <ProjectsSection />
+      </section>
       <section
         id="resume"
         className="h-[40rem] bg-green-600 scroll-mt-30 md:scroll-mt-52"
